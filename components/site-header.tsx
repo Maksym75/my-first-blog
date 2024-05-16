@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { buttonVariants } from './ui/button'
 import { Icons } from './icons'
 import { MainNav } from './main-nav'
+import { MobileNav } from './mobile-nav'
 
 export function SiteHeader() {
 	return (
@@ -19,7 +20,8 @@ export function SiteHeader() {
 						>
 							<div
 								className={
-									(cn(buttonVariants({ variant: 'ghost' })), 'w-10 px-0')
+									(cn(buttonVariants({ variant: 'ghost' })),
+									'w-10 px-0 hidden sm:inline-flex')
 								}
 							>
 								<Icons.gitHub className='h-4 w-4' />
@@ -33,13 +35,15 @@ export function SiteHeader() {
 						>
 							<div
 								className={
-									(cn(buttonVariants({ variant: 'ghost' })), 'w-10 px-0')
+									(cn(buttonVariants({ variant: 'ghost' })),
+									'w-10 px-0 hidden sm:inline-flex')
 								}
 							>
 								<Icons.twitter className='h-4 w-4' />
 								<span className='sr-only'>Twitter</span>
 							</div>
 						</Link>
+						<MobileNav />
 					</nav>
 				</div>
 			</div>
