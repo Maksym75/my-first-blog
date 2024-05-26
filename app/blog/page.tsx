@@ -1,7 +1,10 @@
 import { posts } from '#site/content'
 import { PostItem } from '@/components/post-item'
+import { sortPosts } from '@/lib/utils'
+
 export default async function BlogPage() {
-	const displayPosts = posts
+	const sortedPosts = sortPosts(posts.filter(el => el.published))
+	const displayPosts = sortedPosts
 	return (
 		<div className='container max-w-4xl py-6 lg:py-10'>
 			<div className='flex flex-col gap-4 md:flex-row md:justify-between md:gap-8'>

@@ -1,6 +1,8 @@
-import { Content } from 'next/font/google'
-import { title } from 'process'
+import rehypeSlug from 'rehype-slug'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { defineConfig, defineCollection, s } from 'velite'
+import theme from 'tailwindcss/defaultTheme'
 
 // const st: string = '/post/hello-world'
 // console.log(st.split('/').slice(1).join('/')) // post/hello-world
@@ -35,7 +37,22 @@ export default defineConfig({
 	},
 	collections: { posts },
 	mdx: {
-		rehypePlugins: [],
+		rehypePlugins: [
+			rehypeSlug,
+			// [rehypePrettyCode, { theme: 'dracula' }],
+			[rehypePrettyCode, { theme: 'one-dark-pro' }],
+			// [rehypePrettyCode, { theme: 'github-dark' }],
+			[
+				rehypeAutolinkHeadings,
+				{
+					behavior: 'wrap',
+					properties: {
+						className: ['subheading-anchor'],
+						ariaLabel: 'Link to section',
+					},
+				},
+			],
+		],
 		remarkPlugins: [],
 	},
 })

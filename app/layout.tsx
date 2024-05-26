@@ -18,7 +18,8 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
+		// *  className='scroll-pt-[2.5rem]' чтоб наш хедер не перекрывал линк по которому мы пришли
+		<html lang='en' className='scroll-pt-[2.5rem]'>
 			{/* <body className={inter.className}>{children}</body> */}
 			<body
 				className={cn(
