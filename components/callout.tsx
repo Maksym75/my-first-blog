@@ -16,7 +16,7 @@ export function Callout({
 	return (
 		<div
 			className={cn(
-				'my-6 items-start rounded-md border-2 boder-l-4 p-4 w-full dark:max-w-none',
+				'my-6 items-start rounded-md border-2 border-l-4 p-4 w-full dark:max-w-none',
 				{
 					'border-red-900 border-4 bg-red-100 dark:prose': type === 'danger',
 					'border-yellow-600 border-4 bg-yellow-100 dark:prose':

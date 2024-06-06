@@ -1,10 +1,31 @@
 import { posts } from '#site/content'
 import { PostItem } from '@/components/post-item'
+import { QueryPagination } from '@/components/query-pagination'
 import { sortPosts } from '@/lib/utils'
 
-export default async function BlogPage() {
+const POST_PER_PAGE = 3
+
+interface IBlogPageProps {
+	searchParams: {
+		page?: string
+	}
+}
+
+export default async function BlogPage({ searchParams }: IBlogPageProps) {
 	const sortedPosts = sortPosts(posts.filter(el => el.published))
-	const displayPosts = sortedPosts
+
+	const currentPage = Number(searchParams?.page) || 1
+	const totalPages = Math.ceil(sortedPosts.length / POST_PER_PAGE)
+
+	//? was before pagination
+	// const displayPosts = sortedPosts
+
+	// ? logic to strip down the display posts
+	const displayPosts = sortedPosts.slice(
+		POST_PER_PAGE * (currentPage - 1),
+		POST_PER_PAGE * currentPage
+	)
+
 	return (
 		<div className='container max-w-4xl py-6 lg:py-10'>
 			<div className='flex flex-col gap-4 md:flex-row md:justify-between md:gap-8'>
@@ -13,19 +34,17 @@ export default async function BlogPage() {
 						Blog page
 					</h1>
 					<p className='text-xl text-muted-foreground'>
-						my crawling all over web development
+						My crawling all over web development
 					</p>
 				</div>
 			</div>
 			<hr className='mt-8' />
 			{displayPosts.length > 0 ? (
 				<ul className='flex flex-col'>
-					{/* {displayPosts.map(({ slug, title, description, date }) => { */}
 					{displayPosts.map(post => {
 						const { slug, date, title, description } = post
 						return (
 							<li key={slug}>
-								{' '}
 								<PostItem
 									slug={slug}
 									title={title}
@@ -39,6 +58,7 @@ export default async function BlogPage() {
 			) : (
 				<p>Nothing to see yet</p>
 			)}
+			<QueryPagination totalPages={totalPages} className='justify-end sm:justify-center  mt-5  '/>
 		</div>
 	)
 }
