@@ -2,6 +2,7 @@ import { posts } from '#site/content'
 import { PostItem } from '@/components/post-item'
 import { QueryPagination } from '@/components/query-pagination'
 import { sortPosts } from '@/lib/utils'
+import { Metadata } from 'next'
 
 const POST_PER_PAGE = 3
 
@@ -11,6 +12,11 @@ interface IBlogPageProps {
 	}
 }
 
+export const metadata : Metadata ={
+	title:"My blog",
+	description:"Blog description",
+}
+ 
 export default async function BlogPage({ searchParams }: IBlogPageProps) {
 	const sortedPosts = sortPosts(posts.filter(el => el.published))
 
