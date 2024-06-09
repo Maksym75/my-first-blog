@@ -2,7 +2,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { defineConfig, defineCollection, s } from 'velite'
-import theme from 'tailwindcss/defaultTheme'
+
 
 // const st: string = '/post/hello-world'
 // console.log(st.split('/').slice(1).join('/')) // post/hello-world
@@ -22,6 +22,7 @@ const posts = defineCollection({
 			description: s.string().max(999).optional(),
 			date: s.isodate(),
 			published: s.boolean().default(true),
+			tags: s.array(s.string()).optional(),
 			body: s.mdx(),
 		})
 		.transform(computedFields),
