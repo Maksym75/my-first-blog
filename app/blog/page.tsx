@@ -23,9 +23,6 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
 	const sortedPosts = sortPosts(posts.filter(el => el.published))
 	const totalPages = Math.ceil(sortedPosts.length / POST_PER_PAGE)
 
-	//? was before pagination
-	// const displayPosts = sortedPosts
-
 	// ? logic to strip down the display posts
 	const displayPosts = sortedPosts.slice(
 		POST_PER_PAGE * (currentPage - 1),
@@ -43,27 +40,7 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
 					</p>
 				</div>
 			</div>
-			{/* <hr className='mt-8' />
-			{displayPosts.length > 0 ? (
-				<ul className='flex flex-col'>
-					{displayPosts.map(post => {
-						const { slug, date, title, description } = post
-						return (
-							<li key={slug}>
-								<PostItem
-									slug={slug}
-									title={title}
-									description={description}
-									date={date}
-								></PostItem>
-							</li>
-						)
-					})}
-				</ul>
-			) : (
-				<p>Nothing to see yet</p>
-			)}
-			<QueryPagination totalPages={totalPages} className='justify-end sm:justify-center  mt-5  '/> */}
+
 			<div className='grid grid-cols-12 gap-3 mt-8'>
 				<div className='col-span-12 col-start-1 sm:col-span-8'>
 					<hr />
