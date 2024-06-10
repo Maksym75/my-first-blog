@@ -8,7 +8,6 @@ import Link, { LinkProps } from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Icons } from './icons'
 import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
 
 export function MobileNav() {
 	const pathname = usePathname()

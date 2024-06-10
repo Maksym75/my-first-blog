@@ -10,6 +10,7 @@ interface PostItemProps {
 	title: string
 	description?: string
 	date: string
+	tags?: Array<string>
 }
 
 export function PostItem({ slug, title, description, date }: PostItemProps) {

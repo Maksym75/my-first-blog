@@ -89,7 +89,7 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
 					)}
 					<QueryPagination
 						totalPages={totalPages}
-						className='justify-end mt-4'
+						className='justify-end sm:justify-center  mt-5 '
 					/>
 				</div>
 				<Card className='col-span-12 row-start-3 h-fit sm:col-span-4 sm:col-start-9 sm:row-start-1'>
