@@ -20,6 +20,8 @@ const config = {
 		extend: {
 			fontFamily: { sans: ['var(--font-sans)', ...fontFamily.sans] },
 			colors: {
+				buttonsBg:'hsl(var(--myButton))',
+				buttonsBgActive:'hsl(var(--myButtonActive))',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
